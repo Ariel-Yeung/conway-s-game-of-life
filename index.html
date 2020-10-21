@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1>Conway's Game of Life</h1>
+
+        <!-- board container -->
+        <script>
+        let boardContainer = document.createElement("div");
+        boardContainer.id = "boardContainer";
+        document.body.append(boardContainer);
+
+        let board = document.createElement("table");
+
+        // Alive is true indicate live, else dead
+        let Alive = true
+
+        for (let i=0; i<25; i++) {
+            let newRow = document.createElement("tr");
+
+            for (let j=0; j<25; j++) {
+                let newCell = document.createElement("td");
+
+                if (Alive) {
+                    newCell.classList.add("live");
+                } else {
+                    newCell.classList.add("dead");
+                }
+
+                newRow.append(newCell);
+                Alive = !Alive;
+            }
+            board.append(newRow);
+        }
+
+        boardContainer.append(board);
+        </script>
+
+        <!-- buttons -->
+        <script>
+        let buttonsContainer = document.createElement("div");
+        buttonsContainer.id = "buttonsContainer";
+        document.body.append(buttonsContainer);
+
+        let stepButton = document.createElement("button");
+        stepButton.id = "Step";
+        stepButton.textContent = "Step";
+        buttonsContainer.append(stepButton);
+
+        let goButton = document.createElement("button");
+        goButton.id = "Go";
+        goButton.textContent = "Go";
+        buttonsContainer.append(goButton);
+
+        let pauseButton = document.createElement("button");
+        pauseButton.id = "Pause";
+        pauseButton.textContent = "Pause";
+        buttonsContainer.append(pauseButton);
+
+        let resetButton = document.createElement("button");
+        resetButton.id = "Reset";
+        resetButton.textContent = "Reset";
+        buttonsContainer.append(resetButton);
+
+        let randomButton = document.createElement("button");
+        randomButton.id = "Random";
+        randomButton.textContent = "Random";
+        buttonsContainer.append(randomButton);
+        </script>
+
+        <script src="./conway.js"></script>
+
+        <script src="./conway_dom.js"></script>
+    </body>
+</html>
